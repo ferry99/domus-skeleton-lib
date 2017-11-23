@@ -6,7 +6,7 @@ class initiator{
 
 	public static function run(){
 		self::initConfig();
-		self::autoLoad();
+		//self::autoLoad();
 	}
 
 	public static function initConfig(){
@@ -17,9 +17,11 @@ class initiator{
 		$config = $_SERVER['DOCUMENT_ROOT'].'/domuscom/f_lib_domuscom/config.php';
 		require_once($config);
 
-		if (!DEFINED('PROJ_ROOT')) DEFINE('PROJ_ROOT' , PCS_DEPT.'/dok_perijinan');
-		if (!DEFINED('PROJ_CLASS')) DEFINE('PROJ_CLASS' , PCS_DEPT.'/dok_perijinan/class');
-		if (!DEFINED('PROJ_PAGE')) DEFINE('PROJ_PAGE' , PCS_DEPT.'/dok_perijinan/page');
+		//DEPEND ON PROJECT NAME
+		DEFINE(ACTIVE_DEPT , PCS_DEPT);
+		if (!DEFINED('PROJ_ROOT')) DEFINE('PROJ_ROOT' , ACTIVE_DEPT.'/dok_perijinan');
+		if (!DEFINED('PROJ_CLASS')) DEFINE('PROJ_CLASS' , ACTIVE_DEPT.'/dok_perijinan/class');
+		if (!DEFINED('PROJ_PAGE')) DEFINE('PROJ_PAGE' , ACTIVE_DEPT.'/dok_perijinan/page');
 	}
 
 	public static function autoLoad(){
@@ -39,7 +41,6 @@ class initiator{
 	}
 }
 
-initiator::run();
 initiator::run();
 
 
